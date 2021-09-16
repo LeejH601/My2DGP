@@ -18,6 +18,10 @@ frist_point = char_point
 while True :
     if(move_flag_is_rectangle == True):
         temp_point = char_point.copy()
+        if(char_direct >= 4):
+            if(char_point[0] >= 400.0):
+                move_flag_is_rectangle = False
+                char_direct = 0
         if(char_direct == 0 or char_direct == 4):
             temp_point[0] += char_speed
         elif(char_direct == 1):
@@ -26,16 +30,13 @@ while True :
             temp_point[0] -= char_speed
         elif(char_direct == 3):
             temp_point[1] -= char_speed
-        if(char_direct >= 4):
-            if(char_point[0] >= 400.0):
-                move_flag_is_rectangle = False
+        
         if(temp_point[0] <= 50 or temp_point[0] >= 750) or (temp_point[1] < 90 or temp_point[1] > 510):    
-            char_direct += 1
-           
+            char_direct += 1 
         else:
             char_point = temp_point
         print(char_point)
-    else:
+    elif(move_flag_is_rectangle == False):
         char_point =[
             (math.cos((radiant-90)/180*math.pi) * radius)+ 400,
             (math.sin((radiant-90)/180*math.pi)*radius)+(radius+90)
@@ -45,6 +46,7 @@ while True :
         radiant += 10
         if((radiant-90) >=360):
             move_flag_is_rectangle = True
+            char_point = [400,90]
             radiant = 0
     clear_canvas_now()
     image_grass.draw_now(400,30)
