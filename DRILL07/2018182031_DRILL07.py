@@ -8,7 +8,6 @@ goal_place_x, goal_place_y = 0,0
 ch_state = 0
 ch_point_x, ch_point_y = 400,300
 ch_foward_Vecter_x,ch_foward_Vecter_y = (1,0)
-rand_cnt = 0
 
 def handle_events():
     global running
@@ -19,8 +18,7 @@ def handle_events():
                 
 
 def make_hand():
-    global goal_place_x, goal_place_y, rand_cnt
-    rand_cnt += 1
+    global goal_place_x, goal_place_y
     goal_place_x, goal_place_y = randint(30,KPU_WIDTH-30), randint(30, KPU_HEIGHT-30)
     set_forward()
 
@@ -48,7 +46,6 @@ filp_flag = 1
 speed = 1
 
 make_hand()
-rand_cnt = 0
 
 while running:
     clear_canvas()
@@ -69,10 +66,6 @@ while running:
         if goal_place_x - ch_point_x <= 1 and goal_place_y - ch_point_y <=1:
             ch_state = 0
             make_hand()
-            print(rand_cnt)
-            if rand_cnt > 1:
-                print('오류')
-            rand_cnt = 0
     delay(0.01)
 
 close_canvas()
