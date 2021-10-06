@@ -18,9 +18,10 @@ def handle_events():
                 
 
 def make_hand():
-    global goal_place_x, goal_place_y
-    goal_place_x, goal_place_y = randint(30,KPU_WIDTH-30), randint(30, KPU_HEIGHT-30)
-    set_forward()
+    global goal_place_x, goal_place_y, ch_state
+    if ch_state == 0 :
+        goal_place_x, goal_place_y = randint(30,KPU_WIDTH-30), randint(30, KPU_HEIGHT-30)
+        set_forward()
 
 def set_forward():
     global ch_state,ch_point_y,ch_point_x,ch_foward_Vecter_x,ch_foward_Vecter_y
