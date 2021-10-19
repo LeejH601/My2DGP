@@ -43,7 +43,6 @@ if __name__ == '__main__':
     open_canvas()
     balls = [Ball() for i in range(21)]
     grass = load_image('grass.png')
-    delay(10)
     while running:
         clear_canvas()
         grass.draw(400,30)
