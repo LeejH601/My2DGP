@@ -87,14 +87,18 @@ def draw_line(p1, p2):
     pass
 
 
-prepare_turtle_canvas()
 
-p1 = -200, 300
-p2 = 200, 300
 
-draw_line(p1,p2)
-# draw_line_basic(p1,p2)
+if __name__ == '__main__':
 
-# fill here
+    prepare_turtle_canvas()
 
-turtle.done()
+    p1 = -200, 300
+    p2 = 200, 300
+
+    draw_line(p1,p2)
+    # draw_line_basic(p1,p2)    
+
+    # fill here
+
+    turtle.done()
