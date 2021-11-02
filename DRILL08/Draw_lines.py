@@ -49,6 +49,10 @@ def draw_point(p):
     turtle.goto(p)
     turtle.dot(5, random.random(), random.random(), random.random())
 
+def draw_t_line(p):
+    turtle.goto(p)
+    # turtle.dot(5, random.random(), random.random(), random.random())
+
 
 def draw_line_basic(p1, p2):
     draw_big_point(p1)
@@ -120,19 +124,41 @@ def draw_K_parametic(size, a, b, repeats,degree):
         y = (a-b)*math.sin(t) - b*math.sin(t*(k-1))
         draw_point((x*size,y*size))
 
+def draw_butterFly(size, degree):
+    for i in range(0,360*6,degree):
+        t = math.radians(i)
+        x = math.sin(t)*(math.exp(math.cos(t))-2*math.cos(4*t)-(math.sin(t/12))**5)
+        y = math.cos(t)*(math.exp(math.cos(t))-2*math.cos(4*t)-(math.sin(t/12))**5)
+        draw_point((x*size,y*size))
+
+def draw_j_K_para(size, repeat, degree, j, k, a, b, c, d):
+    turtle.pendown()
+    for i in range(0,36000*repeat,degree):
+        t = math.radians(i/100)
+        x = math.cos(a*t) - math.cos(b * t)**j
+        y = math.sin(c*t) - math.sin(d * t)**k
+        # draw_point((x*size,y*size))
+        draw_t_line((x*size,y*size))
+    turtle.penup()
+
+
 
 prepare_turtle_canvas()
 
 p1 = -200, 300
 p2 = 200, 300
 
-draw_K_parametic(10,6.5,10, 20, 6) # k = 0.65
-draw_K_parametic(10,1,4,3,12) # k = 0.25
-draw_R_triangle(100)
-draw_Peanut(100)
-draw_kite(100)
-draw_line(p1,p2)
-draw_line_basic(p1,p2)
+turtle.speed(0)
+
+draw_j_K_para(100,12,1,3,4,1,80,80,80)
+# draw_butterFly(100,2)
+# draw_K_parametic(10,6.5,10, 20, 6) # k = 0.65
+# draw_K_parametic(10,1,4,3,12) # k = 0.25
+# draw_R_triangle(100)
+# draw_Peanut(100)
+# draw_kite(100)
+# draw_line(p1,p2)
+# draw_line_basic(p1,p2)
 
 # fill here
 
